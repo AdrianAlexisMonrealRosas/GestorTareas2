@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Gestor{% endblock %}
+
+{% block content %}
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <span class="navbar-brand">Gestor de tareas</span>
+        </div>
+    </nav>
+
+    <div class="container-fluid" style="margin-top: 70px;">
+        <div class="row">
+
+            <div class="col-md-3 col-lg-2 bg-dark text-white min-vh-100 p-3">
+                <h5 class="mb-4">Menú</h5>
+
+                <div class="list-group">
+                    <a href="/" class="list-group-item list-group-item-action {% if active_page == 'inicio' %}active{% endif %}">
+                        🏠 Inicio
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        📋 Mis tareas
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        ✔ Completadas
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action">
+                        ⚙ Configuración
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-9 col-lg-10 p-4">
+
+                <ul class="nav nav-pills mb-3">
+                    <li class="nav-item">
+                        <button class="nav-link active">Todas</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link">Pendientes</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link">Completadas</button>
+                    </li>
+                </ul>
+
+                <div class="mb-4">
+                    <h6>Progreso</h6>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 60%;">60%</div>
+                    </div>
+                </div>
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-primary position-fixed bottom-0 end-0 m-4 rounded-circle shadow"
+        data-bs-toggle="modal" data-bs-target="#taskModal"
+        style="width: 60px; height: 60px; font-size: 24px;">
+        +
+    </button>
+
+    <div class="modal fade" id="taskModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>Nueva tarea</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <input class="form-control mb-2" placeholder="Título">
+                    <textarea class="form-control" placeholder="Descripción"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}
