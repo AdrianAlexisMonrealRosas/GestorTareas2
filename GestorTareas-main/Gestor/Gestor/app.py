@@ -63,6 +63,16 @@ def tareas():
 
     return render_template('tareas.html', active_page='tareas')
 
+@app.route('/perfil')
+def perfil():
+    if 'usuario' not in session:
+        flash("Debes iniciar sesión primero")
+        return redirect(url_for('inicio'))
+
+    usuario = usuarios_collection.find_one({"email": session['usuario']})
+
+    return render_template('perfil.html', usuario=usuario)
+
 @app.route('/logout')
 def logout():
     session.pop('usuario', None)

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Información del usuario</h2>
+
+    <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+    <p><strong>Apellidos:</strong> {{ usuario.apellidos }}</p>
+    <p><strong>Email:</strong> {{ usuario.email }}</p>
+</div>
+{% endblock %}
